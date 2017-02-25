@@ -1,0 +1,129 @@
+const webpack = require('webpack');
+const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+let plugins = [
+	new ExtractTextPlugin({
+		filename: 'css/styles.css',
+		disable: false,
+		allChunks: true
+	}),
+	new HtmlWebpackPlugin({
+		template: './src/index.pug'
+	}),
+	new webpack.ProvidePlugin({
+		'$': 'jquery',
+		'jQuery': 'jquery'
+	})
+];
+
+if (isProduction) {
+	plugins.push(
+		new webpack.optimize.UglifyJsPlugin({
+			minimize: true,
+			compress: {
+				warnings: false,
+				screw_ie8: true
+			},
+			output: {
+				comments: false
+			}
+		})
+	);
+}
+
+module.exports = {
+	devtool: isProduction ? 'eval' : 'cheap-eval-source-map',
+	entry: './src/app.js',
+	output: {
+		path: path.join(__dirname, 'dist'),
+		filename: 'js/bundle.js',
+		publicPath: ''
+	},
+	
+	plugins,
+
+	devServer: {
+		inline: true,
+		contentBase: './dist',
+		port: 3000
+	},
+
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: [{
+					loader: 'babel-loader',
+					options: {
+						babelrc: false,
+						presets: [
+						'latest',
+						'stage-0',
+						]
+					}
+				}]
+			},
+			{
+				test:/\.(scss|css)$/,
+				exclude: /node_modules/,
+				use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					publicPath: '../',
+					use: [
+						'css-loader',
+						{
+							loader: 'postcss-loader',
+							options: {
+								plugins: () => [require('autoprefixer')]
+							}
+						},
+						{
+							loader: 'sass-loader',
+							options: {
+								includePaths: [path.resolve(__dirname, './node_modules/foundation-sites/scss')]
+							}
+						},
+						'import-glob-loader'
+					]
+				})
+			},
+			{
+				test: /\.(gif|png|jpe?g|svg)$/i,
+				exclude: [/fonts/, /node_modules/],
+				use: [
+					'file-loader?name=img/[name].[ext]',
+					{
+						loader: 'image-webpack-loader',
+						query: {
+							progressive: true,
+							optipng: {
+								optimizationLevel: 7
+							},
+							gifsicle: {
+								interlaced: false
+							},
+							pngquant: {
+								quality: '65-90',
+								speed: 4
+							}
+						}
+					}
+				]
+			},
+			{
+				test: /\.(woff|woff2|eot|ttf|svg)$/,
+				exclude: [/img/, /node_modules/],
+				use: ['file-loader?name=fonts/[name].[ext]']
+			},
+			{
+				test: /\.pug$/,
+				use: ['pug-loader?pretty=true']
+			}
+		] 
+	}
+}
