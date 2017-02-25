@@ -1,5 +1,5 @@
 {
-  "name": "react-skeleton",
+  "name": "webpack2-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vadim-pos/react-skeleton.git"
+    "url": "git+https://github.com/vadim-pos/webpack2-boilerplate.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vadim-pos/react-skeleton/issues"
+    "url": "https://github.com/vadim-pos/webpack2-boilerplate/issues"
   },
-  "homepage": "https://github.com/vadim-pos/react-skeleton#readme",
+  "homepage": "https://github.com/vadim-pos/webpack2-boilerplate#readme",
   "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.22.2",
