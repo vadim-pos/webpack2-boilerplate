@@ -7,19 +7,25 @@
 4. [SASS(SCSS)](http://sass-lang.com/)
 5. [Karma](https://karma-runner.github.io/1.0/index.html)
 
-### Setup
-
+## Setup
 ```
 $ npm install
 ```
 
 ### Running in dev mode
-
 ```
 $ npm start
 ```
 
-## Build (production)
-
+### Build (production)
 ```
 $ npm run build
+```
+
+## Notes
+### Embedded resources in pug
+Use require for all your embedded resources, to process them with webpack
+```
+div
+  img(src=require("./my/image.png"))
+```
