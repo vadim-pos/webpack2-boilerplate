@@ -96,7 +96,7 @@ module.exports = {
 				test: /\.(gif|png|jpe?g|svg)$/i,
 				exclude: [/fonts/, /node_modules/],
 				use: [
-					'file-loader?name=img/[name].[ext]',
+					'url-loader?limit=10000&name=img/[name].[ext]',
 					{
 						loader: 'image-webpack-loader',
 						query: {
