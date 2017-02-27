@@ -21,18 +21,7 @@ let plugins = [
 ];
 
 if (isProduction) {
-	plugins.push(
-		new webpack.optimize.UglifyJsPlugin({
-			minimize: true,
-			compress: {
-				warnings: false,
-				screw_ie8: true
-			},
-			output: {
-				comments: false
-			}
-		})
-	);
+	plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
 
 module.exports = {
@@ -62,8 +51,12 @@ module.exports = {
 					options: {
 						babelrc: false,
 						presets: [
-						'latest',
-						'stage-0',
+							['latest', {
+								'es2015': {
+									'modules': false
+								}
+							}],
+							'stage-0',
 						]
 					}
 				}]
