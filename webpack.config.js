@@ -75,12 +75,8 @@ module.exports = {
 								plugins: () => [require('autoprefixer')]
 							}
 						},
-						{
-							loader: 'sass-loader',
-							options: {
-								includePaths: [path.resolve(__dirname, './node_modules/foundation-sites/scss')]
-							}
-						},
+						'resolve-url-loader',
+						'sass-loader?sourceMap',
 						'import-glob-loader'
 					]
 				})
