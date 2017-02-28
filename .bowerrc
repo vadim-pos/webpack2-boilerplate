@@ -1,3 +1,6 @@
 {
-	"directory" : "src/vendors/"
+	"directory" : "src/vendors/",
+    "ignoredDependencies": [
+        "jquery"
+    ]
 }
