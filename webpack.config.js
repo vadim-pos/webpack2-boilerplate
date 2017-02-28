@@ -38,7 +38,8 @@ module.exports = {
 	devServer: {
 		inline: true,
 		contentBase: './dist',
-		port: 3000
+		port: 3000,
+		open: true
 	},
 
 	module: {
