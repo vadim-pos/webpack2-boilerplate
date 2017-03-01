@@ -27,11 +27,15 @@ Usage: .visually-hidden { @extend %visuallyhidden; } */
 
 // ========== Media queries ==========
 
-@mixin screen($screenSize) {
+@mixin screen($screenSize, $type: min) {
     @if map_has_key($breakpoints, $screenSize) {
         $width: map_get($breakpoints, $screenSize);
 
-        @media (min-width: $width) {
+        @if ($type == max) {
+            $width: $width - 1px;
+        }
+
+        @media screen and (#{$type}-width: $width) {
             @content;
         }
     }
