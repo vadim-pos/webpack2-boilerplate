@@ -4,16 +4,16 @@
 	@include clearfix();
 	
 	// ----- Media queries -----
-	@media (min-width: $screen-xs) {
+	@include screen(xs) {
 		width: 440px;
 	}
-	@media (min-width: $screen-sm) {
+	@include screen(sm) {
 		width: 728px;
 	}
-	@media (min-width: $screen-md) {
+	@include screen(md) {
 		width: 952px;
 	}
-	@media (min-width: $screen-lg) {
+	@include screen(lg) {
 		width: 1180px;
 	}
 }

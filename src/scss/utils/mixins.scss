@@ -8,3 +8,33 @@
 		clear: both;
 	}
 }
+
+// Breakpoints
+
+@mixin screen($screenSize) {
+    @if $screenSize == xs {
+        @media (min-width: $screen-xs) { @content; }
+    }
+    @else if $screenSize == sm {
+        @media (min-width: $screen-sm) { @content; }
+    }
+    @else if $screenSize == md {
+        @media (min-width: $screen-md) { @content; }
+    }
+    @else if $screenSize == lg {
+        @media (min-width: $screen-lg) { @content; }
+    }
+}
+
+// Visually hide (enable screen readers)
+// Usage: .visually-hidden { @extend %visuallyhidden; }
+%visuallyhidden {
+    margin: -1px;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
+    position: absolute;
+}
