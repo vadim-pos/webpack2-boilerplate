@@ -3,16 +3,16 @@
 	@include clearfix();
 	
 	// ----- Media queries -----
-	@include screen(xs) {
-		width: 440px;
-	}
 	@include screen(sm) {
-		width: 728px;
+		max-width: 576px;
 	}
 	@include screen(md) {
-		width: 952px;
+		max-width: 720px;
 	}
 	@include screen(lg) {
-		width: 1180px;
+		max-width: 940px;
+	}
+	@include screen(xl) {
+		max-width: 1140px;
 	}
 }
