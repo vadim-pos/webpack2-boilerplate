@@ -41,3 +41,49 @@ Usage: .visually-hidden { @extend %visuallyhidden; } */
     }
 }
 
+// ========== Grid mixins ==========
+
+// Centered container
+@mixin container($gutter: $grid-gutter) {
+    @include clearfix();
+
+    margin-right: auto;
+    margin-left: auto;
+    padding-left:  ($gutter / 2);
+    padding-right: ($gutter / 2);
+}
+
+// Columns wrapper
+@mixin row($gutter: $grid-gutter) {
+    margin-left:  ($gutter / -2);
+    margin-right: ($gutter / -2);
+}
+
+// Floated left column
+@mixin column($gutter: $grid-gutter) {
+    position: relative;
+    float: left;
+    min-height: 1px;
+    padding-left:  ($gutter / 2);
+    padding-right: ($gutter / 2);
+}
+
+// Define column span
+@mixin column-span($columns) {
+    width: percentage($columns / $grid-columns);
+}
+
+// Move columns to the right
+@mixin column-offset($columns) {
+    margin-left: percentage($columns / $grid-columns);
+}
+
+// Push column to the left
+@mixin column-push($columns) {
+    left: percentage($columns / $grid-columns);
+}
+
+// Pull column to the right
+@mixin column-pull($columns) {
+    right: percentage($columns / $grid-columns);
+}

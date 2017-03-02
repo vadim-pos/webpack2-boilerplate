@@ -1,7 +1,6 @@
 .container {
-	margin: 0 auto;
-	@include clearfix();
-	
+	@include container();
+
 	// ----- Media queries -----
 	@include screen(sm) {
 		max-width: 576px;
