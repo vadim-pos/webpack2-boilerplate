@@ -39,6 +39,11 @@ Usage: .visually-hidden { @extend %visuallyhidden; } */
             @content;
         }
     }
+    @else {
+        @media screen and (#{$type}-width: #{$screenSize}px) {
+            @content;
+        }
+    }
 }
 
 // ========== Grid mixins ==========
