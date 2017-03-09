@@ -3,7 +3,7 @@ body, html {
 }
 html {
     box-sizing: border-box;
-    font-size: 62.5%;
+    font-size: $baseFontSize;
 }
 *, *:before, *:after {
     box-sizing: inherit;
