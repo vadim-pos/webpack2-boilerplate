@@ -1,7 +1,12 @@
-@import "globals/base";
-@import "globals/fonts";
-
+// Variables
 @import "utils/variables";
+// Mixins
 @import "utils/mixins";
 
+// Global styles for base elements (html, body, etc...)
+@import "globals/base";
+// Fonts (@font-face declarations)
+@import "globals/fonts";
+
+// Styling specific components (BEM-blocks or other structural elements)
 @import "blocks/*";
