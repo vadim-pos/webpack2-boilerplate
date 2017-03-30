@@ -53,12 +53,11 @@ module.exports = {
 					options: {
 						babelrc: false,
 						presets: [
-							['latest', {
+							['env', {
 								'es2015': {
 									'modules': false
 								}
-							}],
-							'stage-0',
+							}]
 						]
 					}
 				}]
