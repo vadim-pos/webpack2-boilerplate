@@ -69,7 +69,12 @@ module.exports = {
 					fallback: 'style-loader',
 					publicPath: '../',
 					use: [
-						'css-loader',
+						{
+							loader: 'css-loader',
+							options: {
+								minimize: isProduction ? true : false
+							}
+						},
 						{
 							loader: 'postcss-loader',
 							options: {
